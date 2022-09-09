@@ -12,7 +12,9 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          leading: Image.asset("assets/images/instagram_text_logo.png"),
+        ),
         body: Center(
           child: Text("Instagram Clone"),
         ),

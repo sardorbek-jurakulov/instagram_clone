@@ -9,6 +9,24 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
+  List<Widget> pagesList = [
+    Center(child: Text("first page")),
+    Center(child: Text("second page")),
+    Center(child: Text("third page")),
+    Center(child: Text("fourth page")),
+    Center(child: Text("fifth page")),
+  ];
+
+  int currentPage = 0;
+  int previousPageIndex = 0;
+
+  Map<int, bool> activeItem = {
+    0: true,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  };
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +48,7 @@ class _IndexPageState extends State<IndexPage> {
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(CupertinoIcons.heart, color: Colors.black),
+              icon: Icon(CupertinoIcons.heart, color: Color(0xff222222)),
             ),
             IconButton(
               onPressed: () {},
@@ -40,16 +58,72 @@ class _IndexPageState extends State<IndexPage> {
           backgroundColor: Colors.white,
           shadowColor: Colors.transparent,
         ),
-        body: Center(
-          child: Text("Instagram Clone"),
-        ),
-        bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-        ]),
+        body: pagesList[currentPage],
+        bottomNavigationBar: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  (activeItem[0] == true) ? Icons.home : Icons.home_outlined,
+                  color: Color(0xff222222),
+                ),
+                label: "",
+              ),
+              BottomNavigationBarItem(
+                icon: Text(
+                  String.fromCharCode(CupertinoIcons.search.codePoint),
+                  style: TextStyle(
+                    inherit: false,
+                    color: Color(0xff222222),
+                    fontSize: 24.0,
+                    fontWeight: (activeItem[1] == true)
+                        ? FontWeight.w700
+                        : FontWeight.w500,
+                    fontFamily:
+                        CupertinoIcons.exclamationmark_circle.fontFamily,
+                    package: CupertinoIcons.exclamationmark_circle.fontPackage,
+                  ),
+                ),
+                label: "",
+              ),
+              const BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.plus_app, color: Color(0xff222222)),
+                  label: ""),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  (activeItem[3] == true)
+                      ? CupertinoIcons.heart_fill
+                      : CupertinoIcons.heart,
+                  color: Color(0xff222222),
+                ),
+                label: "",
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(
+                        width: 1,
+                        color: (activeItem[4] == true)
+                            ? Color(0xff222222)
+                            : Colors.transparent),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.person_crop_circle_fill,
+                    color: Color(0xffcccccc),
+                  ),
+                ),
+                label: "",
+              ),
+            ],
+            selectedItemColor: Color(0xff222222),
+            onTap: (int index) {
+              setState(() {
+                activeItem[previousPageIndex] = false;
+                activeItem[index] = true;
+                currentPage = index;
+                previousPageIndex = index;
+              });
+            }),
       ),
     );
   }

@@ -8,6 +8,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Widget followsAvatarCreator(String followAvatar, int sequenceNumber) {
+    return CircleAvatar(
+      radius: 40,
+      backgroundColor:
+          (sequenceNumber != 0) ? Colors.yellow : Color(0xffffffff),
+      child: CircleAvatar(
+        radius: 38,
+        backgroundColor: Color(0xffffffff),
+        child: CircleAvatar(
+          radius: 36,
+          backgroundImage: AssetImage(followAvatar),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -16,11 +32,11 @@ class _HomePageState extends State<HomePage> {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(115),
             child: Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 0,
                 vertical: 15,
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(
                     color: Color(0xffe4e4e4),
@@ -32,8 +48,8 @@ class _HomePageState extends State<HomePage> {
               ),
               child: AppBar(
                 shadowColor: Colors.transparent,
-                backgroundColor: Color(0xfffafafa),
-                bottom: TabBar(
+                backgroundColor: const Color(0xfffafafa),
+                bottom: const TabBar(
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
@@ -50,11 +66,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    Container(
-                      child: CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.green,
-                      ),
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.green,
                     ),
                     CircleAvatar(
                       radius: 40,
@@ -81,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               Center(
                 child: CircleAvatar(

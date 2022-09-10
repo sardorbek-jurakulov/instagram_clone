@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
             preferredSize: Size.fromHeight(115),
             child: Container(
               padding: EdgeInsets.symmetric(
-                horizontal: 10,
+                horizontal: 0,
                 vertical: 15,
               ),
               decoration: BoxDecoration(
@@ -34,16 +34,27 @@ class _HomePageState extends State<HomePage> {
                 shadowColor: Colors.transparent,
                 backgroundColor: Color(0xfffafafa),
                 bottom: TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
                   tabs: [
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.yellow,
+                      child: CircleAvatar(
+                        radius: 38,
+                        backgroundColor: Color(0xffffffff),
+                        child: CircleAvatar(
+                          radius: 36,
+                          backgroundImage: AssetImage(""),
+                        ),
+                      ),
                     ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.green,
+                    Container(
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.green,
+                      ),
                     ),
                     CircleAvatar(
                       radius: 40,
@@ -62,6 +73,10 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.red,
                     ),
                   ],
+                  padding: EdgeInsets.zero,
+                  indicatorPadding: EdgeInsets.zero,
+                  labelPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                 ),
               ),
             ),

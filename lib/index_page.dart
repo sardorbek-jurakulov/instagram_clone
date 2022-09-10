@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'home_page.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
   List<Widget> pagesList = [
-    Center(child: Text("first page")),
+    HomePage(),
     Center(child: Text("second page")),
     Center(child: Text("third page")),
     Center(child: Text("fourth page")),

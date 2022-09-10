@@ -94,7 +94,7 @@ class _IndexPageState extends State<IndexPage> {
                   (activeItem[3] == true)
                       ? CupertinoIcons.heart_fill
                       : CupertinoIcons.heart,
-                  color: Color(0xff222222),
+                  color: const Color(0xff222222),
                 ),
                 label: "",
               ),
@@ -112,6 +112,12 @@ class _IndexPageState extends State<IndexPage> {
                     CupertinoIcons.person_crop_circle_fill,
                     color: Color(0xffcccccc),
                   ),
+                  // child: const CircleAvatar(
+                  //   radius: 12,
+                  //   backgroundColor: Colors.transparent,
+                  //   backgroundImage:
+                  //       AssetImage("assets/images/account_owner_avatar.jpeg"),
+                  // ),
                 ),
                 label: "",
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,14 +13,20 @@ class _HomePageState extends State<HomePage> {
     return CircleAvatar(
       radius: 40,
       backgroundColor:
-          (sequenceNumber != 0) ? Colors.yellow : Color(0xffffffff),
+          (sequenceNumber != 0) ? Colors.yellow : const Color(0xffffffff),
       child: CircleAvatar(
         radius: 38,
-        backgroundColor: Color(0xffffffff),
-        child: CircleAvatar(
-          radius: 36,
-          backgroundImage: AssetImage(followAvatar),
-        ),
+        backgroundColor: const Color(0xffffffff),
+        child: (sequenceNumber != 0)
+            ? CircleAvatar(
+                radius: 36,
+                backgroundImage: AssetImage(followAvatar),
+              )
+            : Icon(
+                CupertinoIcons.person_crop_circle_fill,
+                size: 80,
+                color: Color(0xffcccccc),
+              ),
       ),
     );
   }
@@ -30,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       length: 6,
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(115),
+            preferredSize: const Size.fromHeight(115),
             child: Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 0,
@@ -49,11 +56,13 @@ class _HomePageState extends State<HomePage> {
               child: AppBar(
                 shadowColor: Colors.transparent,
                 backgroundColor: const Color(0xfffafafa),
-                bottom: const TabBar(
+                bottom: TabBar(
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
                   tabs: [
+                    followsAvatarCreator(
+                        "assets/images/account_owner_avatar.jpeg", 0),
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.yellow,
@@ -66,10 +75,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.green,
-                    ),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.green,
+                    // ),
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.red,

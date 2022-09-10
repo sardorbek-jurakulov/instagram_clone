@@ -10,51 +10,72 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget followsAvatarCreator(String followAvatar, int sequenceNumber) {
-    return Stack(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      children: [
-        CircleAvatar(
-          radius: 40,
-          backgroundColor:
-              (sequenceNumber != 0) ? Colors.yellow : const Color(0xffffffff),
-          child: CircleAvatar(
-            radius: 38,
-            backgroundColor: const Color(0xffffffff),
-            child: (followAvatar.isNotEmpty)
-                ? CircleAvatar(
-                    radius: 36,
-                    backgroundImage: AssetImage(followAvatar),
-                  )
-                : Icon(
-                    CupertinoIcons.person_crop_circle_fill,
-                    size: 80,
-                    color: Color(0xffcccccc),
+    return (sequenceNumber != 0)
+        ? CircleAvatar(
+            radius: 40,
+            backgroundColor:
+                (sequenceNumber != 0) ? Colors.yellow : const Color(0xffffffff),
+            child: CircleAvatar(
+              radius: 38,
+              backgroundColor: const Color(0xffffffff),
+              child: (followAvatar.isNotEmpty)
+                  ? CircleAvatar(
+                      radius: 36,
+                      backgroundImage: AssetImage(followAvatar),
+                    )
+                  : Icon(
+                      CupertinoIcons.person_crop_circle_fill,
+                      size: 80,
+                      color: Color(0xffcccccc),
+                    ),
+            ),
+          )
+        : Stack(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            children: [
+              CircleAvatar(
+                radius: 40,
+                backgroundColor: (sequenceNumber != 0)
+                    ? Colors.yellow
+                    : const Color(0xffffffff),
+                child: CircleAvatar(
+                  radius: 38,
+                  backgroundColor: const Color(0xffffffff),
+                  child: (followAvatar.isNotEmpty)
+                      ? CircleAvatar(
+                          radius: 36,
+                          backgroundImage: AssetImage(followAvatar),
+                        )
+                      : Icon(
+                          CupertinoIcons.person_crop_circle_fill,
+                          size: 80,
+                          color: Color(0xffcccccc),
+                        ),
+                ),
+              ),
+              Positioned(
+                bottom: 1,
+                right: 1,
+                child: Container(
+                  child: Icon(
+                    Icons.add,
+                    color: Color(0xffffffff),
+                    size: 20,
                   ),
-          ),
-        ),
-        Positioned(
-          bottom: 1,
-          right: 1,
-          child: Container(
-            child: Icon(
-              Icons.add,
-              color: Color(0xffffffff),
-              size: 20,
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xff0095f6),
-              border: Border.all(
-                color: Color(0xffffffff),
-                width: 3.5,
+                  decoration: BoxDecoration(
+                    color: Color(0xff0095f6),
+                    border: Border.all(
+                      color: Color(0xffffffff),
+                      width: 3.5,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                ),
               ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+            ],
+          );
   }
 
   @override

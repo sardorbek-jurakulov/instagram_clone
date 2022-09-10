@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
           child: CircleAvatar(
             radius: 38,
             backgroundColor: const Color(0xffffffff),
-            child: (sequenceNumber != 0)
+            child: (followAvatar.isNotEmpty)
                 ? CircleAvatar(
                     radius: 36,
                     backgroundImage: AssetImage(followAvatar),
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 10,
       child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(115),
@@ -87,40 +87,49 @@ class _HomePageState extends State<HomePage> {
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
                   tabs: [
+                    followsAvatarCreator("", 0),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.yellow,
+                    //   child: CircleAvatar(
+                    //     radius: 38,
+                    //     backgroundColor: Color(0xffffffff),
+                    //     child: CircleAvatar(
+                    //       radius: 36,
+                    //       backgroundImage: AssetImage(""),
+                    //     ),
+                    //   ),
+                    // ),
+                    followsAvatarCreator("assets/images/first_avatar.jpeg", 1),
+                    followsAvatarCreator("assets/images/second_avatar.jpeg", 2),
+                    followsAvatarCreator("assets/images/third_avatar.jpeg", 3),
+                    followsAvatarCreator("assets/images/fourth_avatar.jpeg", 4),
+                    followsAvatarCreator("assets/images/fifth_avatar.jpeg", 5),
+                    followsAvatarCreator("assets/images/sixth_avatar.jpeg", 6),
                     followsAvatarCreator(
-                        "assets/images/account_owner_avatar.jpeg", 0),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.yellow,
-                      child: CircleAvatar(
-                        radius: 38,
-                        backgroundColor: Color(0xffffffff),
-                        child: CircleAvatar(
-                          radius: 36,
-                          backgroundImage: AssetImage(""),
-                        ),
-                      ),
-                    ),
+                        "assets/images/seventh_avatar.jpeg", 7),
+                    followsAvatarCreator("assets/images/eigth_avatar.jpeg", 8),
+                    followsAvatarCreator("assets/images/ninth_avatar.jpeg", 9),
                     // CircleAvatar(
                     //   radius: 40,
                     //   backgroundColor: Colors.green,
                     // ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                    ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                    ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                    ),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                    ),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.red,
+                    // ),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.red,
+                    // ),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.red,
+                    // ),
+                    // CircleAvatar(
+                    //   radius: 40,
+                    //   backgroundColor: Colors.red,
+                    // ),
                   ],
                   padding: EdgeInsets.zero,
                   indicatorPadding: EdgeInsets.zero,
@@ -140,6 +149,18 @@ class _HomePageState extends State<HomePage> {
               ),
               Center(
                 child: Text("second tab"),
+              ),
+              Center(
+                child: Text("third tab"),
+              ),
+              Center(
+                child: Text("third tab"),
+              ),
+              Center(
+                child: Text("third tab"),
+              ),
+              Center(
+                child: Text("third tab"),
               ),
               Center(
                 child: Text("third tab"),

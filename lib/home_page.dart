@@ -11,9 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Widget followsAvatarCreator(String followAvatar, int sequenceNumber) {
     return Stack(
-      // fit: StackFit.expand,
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      // overflow: Overflow.visib,
       children: [
         CircleAvatar(
           radius: 40,
@@ -41,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             child: Icon(
               Icons.add,
               color: Color(0xffffffff),
-              size: 18,
+              size: 20,
             ),
             decoration: BoxDecoration(
               color: Color(0xff0095f6),

@@ -97,26 +97,16 @@ class _HomePageState extends State<HomePage> {
               : Stack(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: (profileUsername != profileOwnerUsername)
-                          ? Colors.yellow
-                          : const Color(0xffffffff),
-                      child: CircleAvatar(
-                        radius: 39,
-                        backgroundColor: const Color(0xffffffff),
-                        child: ((followAvatar as String).isNotEmpty)
-                            ? CircleAvatar(
-                                radius: 38,
-                                backgroundImage: AssetImage(followAvatar),
-                              )
-                            : Icon(
-                                CupertinoIcons.person_crop_circle_fill,
-                                size: 80,
-                                color: Color(0xffcccccc),
-                              ),
-                      ),
-                    ),
+                    ((followAvatar as String).isNotEmpty)
+                        ? CircleAvatar(
+                            radius: 40,
+                            backgroundImage: AssetImage(followAvatar),
+                          )
+                        : Icon(
+                            CupertinoIcons.person_crop_circle_fill,
+                            size: 86,
+                            color: Color(0xffcccccc),
+                          ),
                     Positioned(
                       bottom: 1,
                       right: 1,

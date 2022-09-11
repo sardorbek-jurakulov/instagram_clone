@@ -58,17 +58,33 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           (profileUsername != profileOwnerUsername)
-              ? CircleAvatar(
-                  radius: 40,
-                  backgroundColor: (profileUsername != profileOwnerUsername)
-                      ? Colors.yellow
-                      : const Color(0xffffffff),
+              ? Container(
+                  padding: EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color(0xFF405DE6),
+                        Color(0xFF5B51D8),
+                        Color(0xFF833AB4),
+                        Color(0xFFC13584),
+                        Color(0xFFE1306C),
+                        Color(0xFFFD1D1D),
+                        Color(0xFFF56040),
+                        Color(0xFFF77737),
+                        Color(0xFFFCAF45),
+                        Color(0xFFFFDC80),
+                      ],
+                    ),
+                    shape: BoxShape.circle,
+                  ),
                   child: CircleAvatar(
-                    radius: 38,
+                    radius: 40,
                     backgroundColor: const Color(0xffffffff),
                     child: ((followAvatar as String).isNotEmpty)
                         ? CircleAvatar(
-                            radius: 36,
+                            radius: 35,
                             backgroundImage: AssetImage(followAvatar),
                           )
                         : Icon(
@@ -145,7 +161,7 @@ class _HomePageState extends State<HomePage> {
       length: 10,
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(141),
+            preferredSize: const Size.fromHeight(147),
             child: Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 0,

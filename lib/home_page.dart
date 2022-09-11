@@ -9,16 +9,60 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Widget followsAvatarCreator(String followAvatar, int sequenceNumber) {
-    return (sequenceNumber != 0)
+  String profileOwnerUsername = "sardorbek_jurakulov";
+  List<Map<String, String>> accountesInfo = <Map<String, String>>[
+    {
+      "username": "sardorbek_jurakulov",
+      "avatarPath": "",
+    },
+    {
+      "username": "her_Aslanov",
+      "avatarPath": "assets/images/first_avatar.jpeg",
+    },
+    {
+      "username": "shakhnoza_ibragimova",
+      "avatarPath": "assets/images/second_avatar.jpeg",
+    },
+    {
+      "username": "zarifaka",
+      "avatarPath": "assets/images/third_avatar.jpeg",
+    },
+    {
+      "username": "iSystem_learning_center",
+      "avatarPath": "assets/images/fourth_avatar.jpeg",
+    },
+    {
+      "username": "vuejs_uzbekistan",
+      "avatarPath": "assets/images/fifth_avatar.jpeg",
+    },
+    {
+      "username": "nodejs_uzbekistan",
+      "avatarPath": "assets/images/sixth_avatar.jpeg",
+    },
+    {
+      "username": "python_uzbekistan",
+      "avatarPath": "assets/images/seventh_avatar.jpeg",
+    },
+    {
+      "username": "Anvar-Abduqayum",
+      "avatarPath": "assets/images/eigth_avatar.jpeg",
+    },
+    {
+      "username": "Cambridge International University",
+      "avatarPath": "assets/images/ninth_avatar.jpeg",
+    },
+  ];
+  Widget followsAvatarCreator(String? profileUsername, String? followAvatar) {
+    return (profileUsername != profileOwnerUsername)
         ? CircleAvatar(
             radius: 40,
-            backgroundColor:
-                (sequenceNumber != 0) ? Colors.yellow : const Color(0xffffffff),
+            backgroundColor: (profileUsername != profileOwnerUsername)
+                ? Colors.yellow
+                : const Color(0xffffffff),
             child: CircleAvatar(
               radius: 38,
               backgroundColor: const Color(0xffffffff),
-              child: (followAvatar.isNotEmpty)
+              child: ((followAvatar as String).isNotEmpty)
                   ? CircleAvatar(
                       radius: 36,
                       backgroundImage: AssetImage(followAvatar),
@@ -30,48 +74,62 @@ class _HomePageState extends State<HomePage> {
                     ),
             ),
           )
-        : Stack(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
+        : Column(
             children: [
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: (sequenceNumber != 0)
-                    ? Colors.yellow
-                    : const Color(0xffffffff),
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundColor: const Color(0xffffffff),
-                  child: (followAvatar.isNotEmpty)
-                      ? CircleAvatar(
-                          radius: 36,
-                          backgroundImage: AssetImage(followAvatar),
-                        )
-                      : Icon(
-                          CupertinoIcons.person_crop_circle_fill,
-                          size: 80,
-                          color: Color(0xffcccccc),
+              Stack(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: (profileUsername != profileOwnerUsername)
+                        ? Colors.yellow
+                        : const Color(0xffffffff),
+                    child: CircleAvatar(
+                      radius: 38,
+                      backgroundColor: const Color(0xffffffff),
+                      child: ((followAvatar as String).isNotEmpty)
+                          ? CircleAvatar(
+                              radius: 36,
+                              backgroundImage: AssetImage(followAvatar),
+                            )
+                          : Icon(
+                              CupertinoIcons.person_crop_circle_fill,
+                              size: 80,
+                              color: Color(0xffcccccc),
+                            ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 1,
+                    right: 1,
+                    child: Container(
+                      child: Icon(
+                        Icons.add,
+                        color: Color(0xffffffff),
+                        size: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color(0xff0095f6),
+                        border: Border.all(
+                          color: Color(0xffffffff),
+                          width: 3.5,
                         ),
-                ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Positioned(
-                bottom: 1,
-                right: 1,
-                child: Container(
-                  child: Icon(
-                    Icons.add,
-                    color: Color(0xffffffff),
-                    size: 20,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xff0095f6),
-                    border: Border.all(
-                      color: Color(0xffffffff),
-                      width: 3.5,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                profileUsername ?? "username",
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Color(0xff222222),
                 ),
               ),
             ],
@@ -84,7 +142,7 @@ class _HomePageState extends State<HomePage> {
       length: 10,
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(115),
+            preferredSize: const Size.fromHeight(141),
             child: Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 0,
@@ -108,49 +166,46 @@ class _HomePageState extends State<HomePage> {
                   indicatorColor: Colors.transparent,
                   isScrollable: true,
                   tabs: [
-                    followsAvatarCreator("", 0),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.yellow,
-                    //   child: CircleAvatar(
-                    //     radius: 38,
-                    //     backgroundColor: Color(0xffffffff),
-                    //     child: CircleAvatar(
-                    //       radius: 36,
-                    //       backgroundImage: AssetImage(""),
-                    //     ),
-                    //   ),
-                    // ),
-                    followsAvatarCreator("assets/images/first_avatar.jpeg", 1),
-                    followsAvatarCreator("assets/images/second_avatar.jpeg", 2),
-                    followsAvatarCreator("assets/images/third_avatar.jpeg", 3),
-                    followsAvatarCreator("assets/images/fourth_avatar.jpeg", 4),
-                    followsAvatarCreator("assets/images/fifth_avatar.jpeg", 5),
-                    followsAvatarCreator("assets/images/sixth_avatar.jpeg", 6),
                     followsAvatarCreator(
-                        "assets/images/seventh_avatar.jpeg", 7),
-                    followsAvatarCreator("assets/images/eigth_avatar.jpeg", 8),
-                    followsAvatarCreator("assets/images/ninth_avatar.jpeg", 9),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.green,
-                    // ),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.red,
-                    // ),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.red,
-                    // ),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.red,
-                    // ),
-                    // CircleAvatar(
-                    //   radius: 40,
-                    //   backgroundColor: Colors.red,
-                    // ),
+                      accountesInfo[0]["username"],
+                      accountesInfo[0]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[1]["username"],
+                      accountesInfo[1]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[2]["username"],
+                      accountesInfo[2]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[3]["username"],
+                      accountesInfo[3]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[4]["username"],
+                      accountesInfo[4]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[5]["username"],
+                      accountesInfo[5]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[6]["username"],
+                      accountesInfo[6]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[7]["username"],
+                      accountesInfo[7]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[8]["username"],
+                      accountesInfo[8]["avatarPath"],
+                    ),
+                    followsAvatarCreator(
+                      accountesInfo[9]["username"],
+                      accountesInfo[9]["avatarPath"],
+                    ),
                   ],
                   padding: EdgeInsets.zero,
                   indicatorPadding: EdgeInsets.zero,

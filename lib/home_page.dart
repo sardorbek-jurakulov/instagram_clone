@@ -53,30 +53,30 @@ class _HomePageState extends State<HomePage> {
     },
   ];
   Widget followsAvatarCreator(String? profileUsername, String? followAvatar) {
-    return (profileUsername != profileOwnerUsername)
-        ? CircleAvatar(
-            radius: 40,
-            backgroundColor: (profileUsername != profileOwnerUsername)
-                ? Colors.yellow
-                : const Color(0xffffffff),
-            child: CircleAvatar(
-              radius: 38,
-              backgroundColor: const Color(0xffffffff),
-              child: ((followAvatar as String).isNotEmpty)
-                  ? CircleAvatar(
-                      radius: 36,
-                      backgroundImage: AssetImage(followAvatar),
-                    )
-                  : Icon(
-                      CupertinoIcons.person_crop_circle_fill,
-                      size: 80,
-                      color: Color(0xffcccccc),
-                    ),
-            ),
-          )
-        : Column(
-            children: [
-              Stack(
+    return Column(
+      children: [
+        (profileUsername != profileOwnerUsername)
+            ? CircleAvatar(
+                radius: 40,
+                backgroundColor: (profileUsername != profileOwnerUsername)
+                    ? Colors.yellow
+                    : const Color(0xffffffff),
+                child: CircleAvatar(
+                  radius: 38,
+                  backgroundColor: const Color(0xffffffff),
+                  child: ((followAvatar as String).isNotEmpty)
+                      ? CircleAvatar(
+                          radius: 36,
+                          backgroundImage: AssetImage(followAvatar),
+                        )
+                      : Icon(
+                          CupertinoIcons.person_crop_circle_fill,
+                          size: 80,
+                          color: Color(0xffcccccc),
+                        ),
+                ),
+              )
+            : Stack(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 children: [
                   CircleAvatar(
@@ -122,18 +122,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                profileUsername ?? "username",
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Color(0xff222222),
-                ),
-              ),
-            ],
-          );
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          profileUsername ?? "username",
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Color(0xff222222),
+          ),
+        ),
+      ],
+    );
   }
 
   @override

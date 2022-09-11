@@ -161,11 +161,11 @@ class _HomePageState extends State<HomePage> {
       length: 10,
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(147),
+            preferredSize: const Size.fromHeight(141),
             child: Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 0,
-                vertical: 15,
+                vertical: 12,
               ),
               decoration: const BoxDecoration(
                 border: Border(

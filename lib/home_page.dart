@@ -53,86 +53,89 @@ class _HomePageState extends State<HomePage> {
     },
   ];
   Widget followsAvatarCreator(String? profileUsername, String? followAvatar) {
-    return Column(
-      children: [
-        (profileUsername != profileOwnerUsername)
-            ? CircleAvatar(
-                radius: 40,
-                backgroundColor: (profileUsername != profileOwnerUsername)
-                    ? Colors.yellow
-                    : const Color(0xffffffff),
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundColor: const Color(0xffffffff),
-                  child: ((followAvatar as String).isNotEmpty)
-                      ? CircleAvatar(
-                          radius: 36,
-                          backgroundImage: AssetImage(followAvatar),
-                        )
-                      : Icon(
-                          CupertinoIcons.person_crop_circle_fill,
-                          size: 80,
-                          color: Color(0xffcccccc),
-                        ),
-                ),
-              )
-            : Stack(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: (profileUsername != profileOwnerUsername)
-                        ? Colors.yellow
-                        : const Color(0xffffffff),
-                    child: CircleAvatar(
-                      radius: 38,
-                      backgroundColor: const Color(0xffffffff),
-                      child: ((followAvatar as String).isNotEmpty)
-                          ? CircleAvatar(
-                              radius: 36,
-                              backgroundImage: AssetImage(followAvatar),
-                            )
-                          : Icon(
-                              CupertinoIcons.person_crop_circle_fill,
-                              size: 80,
-                              color: Color(0xffcccccc),
-                            ),
-                    ),
+    return Container(
+      width: 80,
+      child: Column(
+        children: [
+          (profileUsername != profileOwnerUsername)
+              ? CircleAvatar(
+                  radius: 40,
+                  backgroundColor: (profileUsername != profileOwnerUsername)
+                      ? Colors.yellow
+                      : const Color(0xffffffff),
+                  child: CircleAvatar(
+                    radius: 38,
+                    backgroundColor: const Color(0xffffffff),
+                    child: ((followAvatar as String).isNotEmpty)
+                        ? CircleAvatar(
+                            radius: 36,
+                            backgroundImage: AssetImage(followAvatar),
+                          )
+                        : Icon(
+                            CupertinoIcons.person_crop_circle_fill,
+                            size: 80,
+                            color: Color(0xffcccccc),
+                          ),
                   ),
-                  Positioned(
-                    bottom: 1,
-                    right: 1,
-                    child: Container(
-                      child: Icon(
-                        Icons.add,
-                        color: Color(0xffffffff),
-                        size: 20,
+                )
+              : Stack(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: (profileUsername != profileOwnerUsername)
+                          ? Colors.yellow
+                          : const Color(0xffffffff),
+                      child: CircleAvatar(
+                        radius: 39,
+                        backgroundColor: const Color(0xffffffff),
+                        child: ((followAvatar as String).isNotEmpty)
+                            ? CircleAvatar(
+                                radius: 38,
+                                backgroundImage: AssetImage(followAvatar),
+                              )
+                            : Icon(
+                                CupertinoIcons.person_crop_circle_fill,
+                                size: 80,
+                                color: Color(0xffcccccc),
+                              ),
                       ),
-                      decoration: BoxDecoration(
-                        color: Color(0xff0095f6),
-                        border: Border.all(
+                    ),
+                    Positioned(
+                      bottom: 1,
+                      right: 1,
+                      child: Container(
+                        child: Icon(
+                          Icons.add,
                           color: Color(0xffffffff),
-                          width: 3.5,
+                          size: 20,
                         ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+                        decoration: BoxDecoration(
+                          color: Color(0xff0095f6),
+                          border: Border.all(
+                            color: Color(0xffffffff),
+                            width: 3.5,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          profileUsername ?? "username",
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Color(0xff222222),
+                  ],
+                ),
+          SizedBox(
+            height: 10,
           ),
-        ),
-      ],
+          Text(
+            profileUsername ?? "username",
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Color(0xff222222),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

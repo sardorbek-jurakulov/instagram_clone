@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:instagram_clone/utility_functions/post_creator_function.dart';
+import 'package:instagram_clone/data_base/posts_storage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -227,6 +228,7 @@ class _HomePageState extends State<HomePage> {
           ),
           body: const TabBarView(
             children: [
+              ListView.builder(itemCount: ),
               PostCreator(),
               Center(
                 child: Text("second tab"),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:instagram_clone/utility_functions/post_creator_function.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -226,12 +227,7 @@ class _HomePageState extends State<HomePage> {
           ),
           body: const TabBarView(
             children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundColor: Colors.blue,
-                  radius: 100,
-                ),
-              ),
+              PostCreator(),
               Center(
                 child: Text("second tab"),
               ),
